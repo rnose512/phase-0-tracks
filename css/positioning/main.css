@@ -1,0 +1,25 @@
+#octopus {
+  text-align: center;
+}
+
+.octopus {
+  position: absolute;
+  text-align: center;
+  padding-top: 50px;
+  padding-left: 20px;
+  z-index: 1;
+}
+
+.hat {
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.glasses {
+  position: relative;
+  left: -220px;
+  top: 40px;
+  z-index: 2;
+
+}
