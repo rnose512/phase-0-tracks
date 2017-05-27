@@ -1,0 +1,14 @@
+Release 0: Equip Your New Robot
+
+-If the floor you're going to is a larger number than the floor you're on, press on the up button. Otherwise, click the down button. 
+-Once the doors open, enter the elevator
+-If the first button matches the floor you're going to, press it. If not, add 1 to that number and if it matches, press it. Repeat.
+
+Release 1: Find a Real-Life Algorithm
+
+-Click on the "Start" button on the coffee bean grinder
+-When the coffee grinder stops grinding, put a coffee filter into the filter of the coffee machine. 
+-Pour the ground coffee beans into the filter and place into coffee machine
+-Add water at the top of the coffee maker up to the line that says "MAX"
+-Make sure the coffee pot is empty and place it in the coffee maker
+-Click on the "ON" button twice
