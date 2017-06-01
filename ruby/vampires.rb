@@ -1,28 +1,33 @@
 puts "How many employees will be processed?"
-answer = gets.chomp
-i = 1
-while i <= answer
+answer = gets.chomp.to_i
+i = 0
+while i < answer
   puts 'What is your name?'
-  puts 'How old are you? What year were you born?'
-  puts 'Our company cafeteria serves garlic bread. Should we order some for you?'
-  puts 'Would you like to enroll in the company’s health insurance?'
+  name = gets.chomp
+  puts 'How old are you?'
+  age = gets.chomp.to_i
+  puts 'What year were you born?'
+  year = gets.chomp.to_i
+  puts 'Our company cafeteria serves garlic bread. Should we order some for you? (Y/N)'
+  garlic = gets.chomp.capitalize
+  puts 'Would you like to enroll in the company’s health insurance? (Y/N)'
+  insurance = gets.chomp.capitalize
 
-  wolves_like_sunshine = true
-  wolves_like_garlic = true
-  vampires_like_sunshine = false
-  vampires_like_garlic = false
+  if 2017 - year === age || age-1
+    age_correct = true
+  end
 
-  if age === true && (garlic === yes || insurance === yes)
-    puts “Probably not a vampire.”
-  elsif age === false && (garlic === no || insurance === no)
-    puts “Probably a vampire.”
-  elsif age === false && (garlic === no && insurance === no)
-    puts “Almost certainly a vampire.”
-  elsif name === “Drake Cula” || name === “Tu Fang”
-    puts “Definitely a vampire.”
+  if age_correct && (garlic === 'Y' || insurance === 'Y')
+    puts 'Probably not a vampire.'
+  elsif !age_correct && (garlic === 'N' || insurance === 'N')
+    puts 'Probably a vampire.'
+  elsif !age_correct && (garlic === 'N' && insurance === 'N')
+    puts 'Almost certainly a vampire.'
+  elsif name === 'Drake Cula' || name === 'Tu Fang'
+    puts 'Definitely a vampire.'
   else
     puts "Results inconclusive."
   end
 
-  i++
+  i += 1
 end
