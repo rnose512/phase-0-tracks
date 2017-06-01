@@ -1,0 +1,42 @@
+header {
+
+}
+
+.column-1 {
+  border: 1px solid black;
+  width: 48%;
+  box-sizing: border-box;
+  float: left;
+  margin: 1%;
+  /*width: 49%;
+  vertical-align: top;
+  display: inline-block;*/
+}
+
+.column-2 {
+  border: 1px solid black;
+  width: 48%;
+  box-sizing: border-box;
+  float: right;
+  margin: 1%;
+  /*width: 49%;
+  vertical-align: top;
+  display: inline-block;*/
+}
+
+.wrapper {
+  overflow: auto;
+  /*background-color: pink;*/
+}
+
+footer {
+
+}
+
+h1, h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-family: 'Source Code Pro', monospace;
+}
