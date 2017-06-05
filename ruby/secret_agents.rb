@@ -10,7 +10,7 @@ def encrypt(string)
       end
     i += 1
     end
-    puts string
+    p string
   end
 
 #encrypt("abc")
@@ -25,7 +25,7 @@ def encrypt(string)
       string[i] = alphabet[alphabet.index(string[i])-1]
       i += 1
     end
-    puts string
+    p string
   end
 #decrypt("bcd")
 #decrypt("afe")
