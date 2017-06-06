@@ -8,7 +8,7 @@ design[:age] = gets.chomp.to_i
 puts "How many children do you have?"
 design[:children] = gets.chomp.to_i
 puts "What would you like your decor theme to be?"
-design[:decor_theme] = gets.chomp
+design[:decor_theme] = gets.chomp.capitalize
 puts "Do you like carpet?"
 design[:carpet] = gets.chomp.upcase
 if design[:carpet] == "YES"
@@ -18,18 +18,18 @@ else
 end
 puts "Do you like hardwood?"
 design[:hardwood] = gets.chomp.upcase
-if hardwood == "YES"
+if design[:hardwood] == "YES"
 design[:hardwood]
-  hardwood = true
+  design[:hardwood] = true
 else
 design[:hardwood]
-  hardwood = false
+  design[:hardwood] = false
 end
 puts "What is your favorite wall color?"
 design[:color] = gets.chomp
 
 #print the answers to the screen
-p design
+design.each {|key, value| puts "#{key} : #{value}" }
 
 #ask the user if they want to change any of the answers, then change it if they do
 # puts "Would you like to make any changes to your answers?"
