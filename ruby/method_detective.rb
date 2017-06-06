@@ -17,6 +17,7 @@
 => "STOP! YOU’RE UNDER ARREST!"
 
 "the usual".insert(-1, ' suspects')
+"the usual"<<" suspects"
 => "the usual suspects"
 
 " suspects".insert(0, 'the usual')
@@ -25,11 +26,12 @@
 "The case of the disappearing last letter".chop!
 => "The case of the disappearing last lette"
 
-# "The mystery of the missing first letter".slice(1,-1)
-# => "he mystery of the missing first letter"
+"The mystery of the missing first letter".slice!(1.. -1)
+"The mystery of the missing first letter".delete! "T"
+=> "he mystery of the missing first letter"
 
-# "Elementary,    my   dear        Watson!".<???>
-# => "Elementary, my dear Watson!"
+"Elementary,    my   dear        Watson!".split.join(" ")
+=> "Elementary, my dear Watson!"
 
 "z".ord
 => 122
