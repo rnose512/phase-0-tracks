@@ -23,11 +23,7 @@ def next_letter(array)
 end
 
 def fake_name(name)
-# ask user for their name
-  puts 'What is your name?'
-  name = gets.chomp.downcase
-  # swap first and last name
-  split_name = name.split(" ")
+split_name = name.split(" ")
 
 # change vowels to the next vowel in 'aeiou'
 # change consonants to the next consonant
@@ -43,5 +39,16 @@ def fake_name(name)
   p last.capitalize + ' ' + first.capitalize
 end
 
-fake_name("Felicia Torres")
-# ["t", "o", "r", "r", "e", "s", " ", "f", "e", "l", "i", "c", "i", "a"]
+names = {}
+loop do
+  # ask user for their name
+  puts 'What is your name? Type "quit" when done'
+  name = gets.chomp.downcase
+  break if name == 'quit'
+  names[name.capitalize] = fake_name(name)
+end
+
+names.each {|k,v| puts "#{k} is actually #{v}"}
+
+#edge case would be if the user only enters one name
+#another edge case -- what if the user inputs name in lower case? how to print first and last name capitalized at the end?
