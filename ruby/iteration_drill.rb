@@ -9,11 +9,11 @@ zombie_apocalypse_supplies.each {|x| p x + "*"}
 
 # 2. In order to keep yourself organized, sort your zombie_apocalypse_supplies
 # in alphabetical order. Do not use any special built-in methods.
-i = 0
-while i < zombie_apocalypse_supplies.length do
-  sort = []
-  zombie_apocalypse_supplies[i] >
-end
+# i = 0
+# while i < zombie_apocalypse_supplies.length do
+#   sort = []
+#   zombie_apocalypse_supplies[i] >
+# end
 
 # 3. Create a method to see if a particular item (string) is in the
 # zombie_apocalypse_supplies. Do not use any special built-in methods.
