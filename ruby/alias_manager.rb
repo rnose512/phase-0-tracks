@@ -48,4 +48,4 @@ loop do
   names[name.capitalize] = fake_name(name)
 end
 
-names.each {|k,v| puts "#{k} is actually #{v}"}
+names.each {|k,v| puts "#{v} is actually #{k}"}
