@@ -42,13 +42,10 @@ end
 names = {}
 loop do
   # ask user for their name
-  puts 'What is your name? Type "quit" when done'
+  puts 'What is your first and last name? Type "quit" when done'
   name = gets.chomp.downcase
   break if name == 'quit'
   names[name.capitalize] = fake_name(name)
 end
 
 names.each {|k,v| puts "#{k} is actually #{v}"}
-
-#edge case would be if the user only enters one name
-#another edge case -- what if the user inputs name in lower case? how to print first and last name capitalized at the end?
