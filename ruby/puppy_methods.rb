@@ -7,3 +7,5 @@ class Puppy
 
 end
 
+sam = Puppy.new
+sam.fetch("ball")
