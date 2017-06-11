@@ -1,8 +1,12 @@
 # Define a Santa class, include initialize method as well as 2 other instance methods
 class Santa
 
-  def initialize
+  def initialize(gender, ethnicity, reindeer_ranking, age)
     p "Initializing Santa instance ..."
+    @gender = gender
+    @ethnicity = ethnicity
+    @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+    @age = 0
   end
 
   def speak
