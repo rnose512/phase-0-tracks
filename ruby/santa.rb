@@ -4,6 +4,10 @@
 # Release 2: Work with getter and setter methods
 
 class Santa
+  #getter method shortcut
+  attr_reader :age, :ethnicity
+  #setter method shortcut
+  attr_accessor :gender
 
   def initialize(gender, ethnicity)
     p "Initializing Santa instance ..."
@@ -28,20 +32,7 @@ class Santa
   def get_mad_at(reindeer_name)
     @reindeer_ranking.delete_at(@reindeer_ranking.index(reindeer_name))
     @reindeer_ranking[-1] = reindeer_name
-  end
-
-  #setter method
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-
-  #getter method
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
+    p @reindeer_ranking
   end
 
 end
@@ -49,11 +40,10 @@ end
 sally = Santa.new("female", "South African")
 sally.speak
 sally.eat_milk_and_cookies("oatmeal cookie")
-sally.celebrate_birthday
+p sally.celebrate_birthday
 sally.get_mad_at("Rudolph")
 sally.gender=("Transgender")
-p sally.ethnicity
-p sally.reindeer_ranking
+p sally.gender
 
 
 # santas = []
