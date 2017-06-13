@@ -5,9 +5,9 @@
 
 class Santa
   #getter method shortcut
-  attr_reader :age, :ethnicity
+  attr_reader :ethnicity
   #setter method shortcut
-  attr_accessor :gender
+  attr_accessor :gender, :age
 
   def initialize(gender, ethnicity)
     p "Initializing Santa instance ..."
@@ -37,19 +37,34 @@ class Santa
 
 end
 
-sally = Santa.new("female", "South African")
-sally.speak
-sally.eat_milk_and_cookies("oatmeal cookie")
-p sally.celebrate_birthday
-sally.get_mad_at("Rudolph")
-sally.gender=("Transgender")
-p sally.gender
+# sally = Santa.new("female", "South African")
+# sally.speak
+# sally.eat_milk_and_cookies("oatmeal cookie")
+# p sally.celebrate_birthday
+# sally.get_mad_at("Rudolph")
+# sally.gender=("Transgender")
+# p sally.gender
 
 
 # santas = []
-# example_genders = ["female", "male", "N/A", "Hijira", "Genderless"]
-# example_ethnicities = ["Japanese", "French", "Prefer not to say", "Micronesian", "Polynesian"]
+example_genders = ["female", "male", "Hijira", "Genderless", "agender", "bigender", "gender fluid", "N/A"]
+example_ethnicities = ["Japanese", "French", "Prefer not to say", "Micronesian", "Polynesian", "black", "Latino", "white", "Japanese-African", "Mystical Creature (unicorn)", "N/A"]
 # example_genders.length.times do |i|
 #   santas << Santa.new(example_genders[i], example_ethnicities[i])
 # end
+
+# PSEUDOCODE
+# Steps
+# Run the code 100 times
+# Create a new Santa instance with a random index from the gender array and a random index from the ethnicities array
+# Set age to a random number between 0 - 140
+# Print the Santa and its attributes
+1000.times do
+  santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+  santa.age = rand(0..140)
+  p santa.ethnicity
+  p santa.gender
+  p santa.age
+end
+
 
