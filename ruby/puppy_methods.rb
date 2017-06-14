@@ -1,56 +1,76 @@
 # Release 0: Add methods to Puppy Class and add driver code to test methods
 class Puppy
 
+  def initialize
+    puts "Initializing new puppy instance ..."
+  end
+
   def fetch(toy)
     puts "I brought back the #{toy}!"
     toy
   end
 
   def speak(int)
-    p "Woof!" * int
+    int.times do
+      puts "Woof!"
+    end
   end
 
   def roll_over
-    p "*rolls over*"
+    puts "*rolls over*"
   end
 
   def dog_years(human_years)
-    p human_years * 15
+    dog_years = human_years*15
+    p dog_years
   end
 
-  def paw
-    p "*Puts paw on human palm*"
+  def sit
+    puts "*sits*"
   end
-
 end
 
-sam = Puppy.new
-sam.fetch("ball")
-sam.speak(4)
-sam.roll_over
-sam.dog_years(3)
-sam.paw
+# Driver code
+puppy = Puppy.new
+puppy.fetch("ball")
+puppy.speak(4)
+puppy.roll_over
+puppy.dog_years(3)
+puppy.sit
 
-class FamousClimbers
+class Pokemon
+
+  attr_reader :name
 
   def initialize(name)
+    puts "Initializing new Pokemon instance ..."
     @name = name
   end
 
-  def climb(grade)
-    p "I'm going to climb a #{grade}"
+  def summon
+    puts "#{name}, I choose you!"
   end
 
-  def fall
-    p "Catch!"
+  def attack(damage)
+    puts "#{name} did #{damage} HP to the opponent"
   end
 
 end
 
-climbers = {}
-climbers = 50.times.collect {FamousClimbers.new(50)}
+# Driver code
 
-climbers.each do |climber|
-  climber.climb("V15")
-  climber.fall
+pokemon = []
+sample_pokemon = ["Pikachu", "Togepi", "Squirtle", "Bulbasaur", "Charmander", "Mew", "Snorlax", "Jigglypuff", "Diglet", "Coughing", "Ekans", "Meowth", "Magicarp", "Garados"]
+
+50.times do
+  pokemon << Pokemon.new(sample_pokemon.sample)
 end
+
+pokemon.each do |pokemon|
+  pokemon.summon
+  pokemon.attack(rand(10..200))
+end
+
+# pokemon = Pokemon.new("Pikachu")
+# pokemon.summon
+# pokemon.attack(50)
