@@ -1,3 +1,4 @@
+# Release 0: Add methods to Puppy Class and add driver code to test methods
 class Puppy
 
   def initialize
