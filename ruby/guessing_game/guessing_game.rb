@@ -59,7 +59,6 @@ class GuessingGame
       # Get all indices of letter appearing in word
       # loop through array of indices and replace index of guessed word at index that the letter appears in the chosen word with the inputted letter
       letter_placement = @chosen_word.each_index.select{|i| @chosen_word[i] == letter}
-      p letter_placement
       letter_placement.each do |placement_index|
         @guessed_word[placement_index] = @letter if @chosen_word.include? letter
       end
