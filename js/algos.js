@@ -17,8 +17,6 @@ function longestPhrase(array) {
   return longest;
 }
 
-console.log(longestPhrase(["long phrase","longest phrase","longer phrase"]))
-
 /* keyValueMatch method: checks if two objects have anything in common
    input: 2 objects
    output: true or false
@@ -42,3 +40,17 @@ function keyValueMatch(obj1, obj2) {
 function randomStrings(arrayLength) {
 
 }
+
+// DRIVER CODE
+
+// For longest phrase method
+console.log(longestPhrase(["long phrase","longest phrase","longer phrase"]))
+
+// For key-value match method
+keyValueMatch({name: "Steven", age: 54}, {name: "Tamir", age: 54}); //  true
+keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //  true
+
+// For random test data generator
+var phrases = randomStrings(10);
+console.log(randomStrings);
+console.log(longestPhrase(randomStrings));
