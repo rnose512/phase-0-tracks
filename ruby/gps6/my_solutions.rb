@@ -11,6 +11,7 @@ require_relative 'state_data'
 
 class VirusPredictor
 
+
 # this method initializes an instance of the VirusPredictor Class
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
@@ -20,10 +21,12 @@ class VirusPredictor
 
 # this method calls the other two methods below
   def virus_effects
-    predicted_deaths
-    speed_of_spread
+    number_of_deaths = predicted_deaths
+    speed = speed_of_spread
+    print "#{@state} will lose #{number_of_deaths} people in this outbreak and will spread across the state in #{speed} months.\n\n"
   end
 
+# Doesn't allow objects outside of the class to use methods below 'private'
   private
 
 # this method calculates the number of deaths that is contingent upon population density
@@ -31,18 +34,12 @@ class VirusPredictor
     # predicted deaths is solely based on population density
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
-    else
+    elsif @population_density <= 50
       number_of_deaths = (@population * 0.05).floor
+    else
+      multipler_var = (@population_density / 50) * 0.1
+      number_of_deaths = (@population * multipler_var).floor
     end
-
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
-
   end
 
 # this method calculates the speed at which the virus spreads depending on population density
@@ -53,22 +50,13 @@ class VirusPredictor
 
     if @population_density >= 200
       speed += 0.5
-    elsif @population_density >= 150
-      speed += 1
-    elsif @population_density >= 100
-      speed += 1.5
-    elsif @population_density >= 50
-      speed += 2
-    else
+    elsif @population_density <= 50
       speed += 2.5
+    else
+      months = 2.5 - ((@population_density.floor / 50) * 0.5)
+      speed += months
     end
-
-    puts " and will spread across the state in #{speed} months.\n\n"
-
   end
-
-
-
 end
 
 #=======================================================================
@@ -97,3 +85,17 @@ alaska.virus_effects
 
 #=======================================================================
 # Reflection Section
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+# The first hash uses a string as a key and the mini hash uses a symbol as a key
+
+# What does require_relative do? How is it different from require?
+# It allows you to access data from another file in the directory. require_relative differs from require because it lets you access data from the current directory whereas with require, you would need to write the whole path
+
+# What are some ways to iterate through a hash?
+# You can iterate through a hash with .each
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+# The variables were being passed as parameters but it wasn't necessary since the values were being assigned to the variables when the instance was being initialized.
+
+# What concept did you most solidify in this challenge?
+# Writing DRY code. Paying closer attention to how variables are declared and how they are used.
