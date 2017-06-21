@@ -24,21 +24,32 @@ function longestPhrase(array) {
      compare keys and values of both objects, return true if they match */
 
 function keyValueMatch(obj1, obj2) {
-  if
+  for (var prop in obj1) {
+    for (var equivalent in obj2) {
+      if (obj1[prop] === obj2[equivalent]) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 /* randomStrings method creates an array of random strings to use for other methods
    input: integer for length
    output: array of strings of the given length
    steps:
-     declase output array
+     declare output array
      equivalent of int.times do
      push into output array strings of randomly varying length, minimum of 1 letter and max of 10
    add driver code that does the following 10 times:
    generates an array, prints the array, feed the array to your "longest word" function, print the results. */
 
 function randomStrings(arrayLength) {
-
+  var ouputArray = [];
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  for (var i = 0; i < arrayLength; i++) {
+    outputArray.push(possible.charAt(Math.floor(Math.random()*possible.length)));
+  }
 }
 
 // DRIVER CODE
