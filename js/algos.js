@@ -40,17 +40,32 @@ function keyValueMatch(obj1, obj2) {
    steps:
      declare output array
      equivalent of int.times do
-     push into output array strings of randomly varying length, minimum of 1 letter and max of 10
+     push into output array strings of randomly varying length,
+     minimum of 1 letter and max of 10
    add driver code that does the following 10 times:
    generates an array, prints the array, feed the array to your "longest word" function, print the results. */
 
-function randomStrings(arrayLength) {
-  var ouputArray = [];
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  for (var i = 0; i < arrayLength; i++) {
-    outputArray.push(possible.charAt(Math.floor(Math.random()*possible.length)));
-  }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }
+
+function randomStrings(arrayLength) {
+  var outputArray = [];
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+
+  for (var i = 0; i < arrayLength; i++) {
+    string = '';
+    stringLength = getRandomInt(1,10);
+    while (string.length < stringLength) {
+      string += chars[Math.floor(Math.random()*chars.length)];
+    }
+    outputArray[i] = string;
+  }
+  return outputArray;
+}
+
 
 // DRIVER CODE
 
@@ -64,4 +79,4 @@ keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //  true
 // For random test data generator
 var phrases = randomStrings(10);
 console.log(randomStrings);
-console.log(longestPhrase(randomStrings));
+console.log(longestPhrase(phrases));
