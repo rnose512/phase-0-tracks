@@ -38,3 +38,23 @@ To check that it was deleted:
 sqlite> SELECT * FROM tasks WHERE tasks.name_id=4;
 3|study|false|5|4
 
+Release 3: 
+Try a few different joins in your database, and record the commands and the output in queries.txt
+
+sqlite> SELECT task FROM tasks INNER JOIN names ON tasks.name_id=names.id;
+groceries
+study
+reports
+blog post
+vacuum
+meal prep
+
+sqlite> SELECT past_due FROM tasks LEFT JOIN names ON tasks.name_id=names.id;
+false
+false
+true
+true
+true
+true
+
+
