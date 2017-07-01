@@ -1,0 +1,60 @@
+1. Display the information in one table (either table is fine).
+sqlite> SELECT * FROM tasks;
+1|groceries|false|0|1
+2|homework|false|3|4
+3|study|false|5|4
+4|reports|true|4|2
+5|blog post|true|3|2
+6|vacuum|true|0|3
+7|meal prep|false|0|1
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+sqlite> UPDATE tasks SET past_due="true" WHERE task="meal prep";
+
+3. Display the information in both tables using one query.
+sqlite> SELECT * FROM tasks, names WHERE tasks.name_id = names.id;
+1|groceries|false|0|1|1|Rio
+2|homework|false|3|4|4|Steph
+3|study|false|5|4|4|Steph
+4|reports|true|4|2|2|Patty
+5|blog post|true|3|2|2|Patty
+6|vacuum|true|0|3|3|Shelly
+7|meal prep|true|0|1|1|Rio
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+sqlite> SELECT tasks.task, names.name FROM tasks JOIN names ON tasks.name_id = names.id;
+groceries|Rio
+homework|Steph
+study|Steph
+reports|Patty
+blog post|Patty
+vacuum|Shelly
+meal prep|Rio
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+sqlite> DELETE FROM tasks WHERE task="homework";
+
+To check that it was deleted:
+sqlite> SELECT * FROM tasks WHERE tasks.name_id=4;
+3|study|false|5|4
+
+Release 3: 
+Try a few different joins in your database, and record the commands and the output in queries.txt
+
+sqlite> SELECT task FROM tasks INNER JOIN names ON tasks.name_id=names.id;
+groceries
+study
+reports
+blog post
+vacuum
+meal prep
+
+sqlite> SELECT past_due FROM tasks LEFT JOIN names ON tasks.name_id=names.id;
+false
+false
+true
+true
+true
+true
+
+
