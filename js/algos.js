@@ -58,7 +58,7 @@ function randomStrings(arrayLength) {
     string = '';
     stringLength = getRandomInt(1,10);
     while (string.length < stringLength) {
-      string += chars[Math.floor(Math.random()*chars.length)];
+      string += chars[getRandomInt(0, chars.length)];
     }
     outputArray[i] = string;
   }
