@@ -50,17 +50,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function randomStrings(arrayLength) {
-  var outputArray = [];
+function randomPhrase() {
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-
-  for (var i = 0; i < arrayLength; i++) {
-    string = '';
+  string = '';
     stringLength = getRandomInt(1,10);
     while (string.length < stringLength) {
       string += chars[getRandomInt(0, chars.length)];
     }
-    outputArray[i] = string;
+  return string;
+}
+
+function randomStrings(arrayLength) {
+  var outputArray = [];
+  for (var i = 0; i < arrayLength; i++) {
+    outputArray[i] = randomPhrase();
   }
   return outputArray;
 }
@@ -77,5 +80,5 @@ keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //  true
 
 // For random test data generator
 var phrases = randomStrings(10);
-console.log(randomStrings);
+console.log(phrases);
 console.log(longestPhrase(phrases));
