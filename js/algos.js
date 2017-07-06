@@ -25,10 +25,8 @@ function longestPhrase(array) {
 
 function keyValueMatch(obj1, obj2) {
   for (var prop in obj1) {
-    for (var equivalent in obj2) {
-      if (obj1[prop] === obj2[equivalent]) {
-        return true;
-      }
+    if (obj1[prop] === obj2[prop]) {
+      return true;
     }
   }
   return false;
@@ -51,17 +49,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function randomStrings(arrayLength) {
-  var outputArray = [];
+function randomPhrase() {
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-
-  for (var i = 0; i < arrayLength; i++) {
-    string = '';
+  string = '';
     stringLength = getRandomInt(1,10);
     while (string.length < stringLength) {
-      string += chars[Math.floor(Math.random()*chars.length)];
+      string += chars[getRandomInt(0, chars.length)];
     }
-    outputArray[i] = string;
+  return string;
+}
+
+function randomStrings(arrayLength) {
+  var outputArray = [];
+  for (var i = 0; i < arrayLength; i++) {
+    outputArray[i] = randomPhrase();
   }
   return outputArray;
 }
@@ -78,5 +79,6 @@ keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //  true
 
 // For random test data generator
 var phrases = randomStrings(10);
-console.log(randomStrings);
+solo-challenge
+console.log(phrases);
 console.log(longestPhrase(phrases));
