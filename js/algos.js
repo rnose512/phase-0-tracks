@@ -32,7 +32,6 @@ function keyValueMatch(obj1, obj2) {
   return false;
 }
 
-
 /* randomStrings method creates an array of random strings to use for other methods
    input: integer for length
    output: array of strings of the given length
@@ -80,5 +79,6 @@ keyValueMatch({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //  true
 
 // For random test data generator
 var phrases = randomStrings(10);
+solo-challenge
 console.log(phrases);
 console.log(longestPhrase(phrases));
