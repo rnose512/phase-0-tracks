@@ -105,11 +105,11 @@ end
 def remove_task(db)
   task_to_remove = get_task_to_remove(db)
   db.execute("DELETE FROM tasks WHERE task = '#{task_to_remove}'")
+  display_tasks(db)
 end
 
 def update_past_due(db)
 # update past_due column if task is now past due
-# user_id = db.execute("SELECT id FROM users WHERE username = '#{input}'")[0][0]
   user_id = get_user_id(db)
   due_date_array = db.execute("SELECT due_date FROM tasks WHERE user_id = #{user_id}")
   $user_data[:due_date] = due_date_array[0][0]
@@ -154,17 +154,6 @@ def add_task_loop
     response
   end
 end
-
-# def run_script2(db)
-#   username = get_username
-
-#   if username === 'none'
-#     create_new_user
-#     prompt_new_user_to_add_task
-#   else
-#     welcome_existing_user_back
-#     display_menu_for_existing_user
-# end
 
 def run_script(db)
   puts "What is your username? Enter 'none' if you're a new user"
