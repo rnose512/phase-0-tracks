@@ -42,47 +42,16 @@ SQL
  db.execute(create_tasks_table_cmd)
 
 # method to add a user to users table
- def add_user(db)
-    puts "What is your name?"
-    input_name = gets.chomp
-    puts "What would you like your user name to be?"
-    input_username = gets.chomp
-    puts "What is your email?"
-    input_email = gets.chomp
-
-    def create_user(db, username, name, email)
-      db.execute("INSERT INTO users (name, username, email) VALUES (?, ?, ?)", [name, username, email])
-    end
-
-    create_user(db, input_username, input_name, input_email)
- end
+def create_user(db, username, name, email)
+  db.execute("INSERT INTO users (name, username, email) VALUES (?, ?, ?)", [name, username, email])
+end
 
 # method to add task to tasks table
- def add_task(db, input)
-   puts "What is your task?"
-    task = gets.chomp
-    puts "What is the location of the task?"
-    location = gets.chomp
-    # grab due date INT from weekdays hash
-    puts "What week day is the task due?"
-    due_weekday = gets.chomp.downcase
-    due_date = $weekdays[due_weekday]
-    if $t.wday <= due_date
-      past_due = 'false'
-    elsif $t.wday > due_date
-      past_due = 'true'
-    end
-    # determine past due id due_date is past current date
-    # get user id using username entered
-
-    def enter_task(db, input, task, location, past_due, due_date)
-      user_id_array = db.execute("SELECT id FROM users WHERE username = '#{input}'")
-      user_id = user_id_array[0][0]
-      db.execute("INSERT INTO tasks (task, location, past_due, due_date, user_id) VALUES (?, ?, ?, ?, ?)", [task, location, past_due, due_date, 1])
-    end
-
-    enter_task(db, input, task, location, past_due, due_date)
- end
+def enter_task(db, input, task, location, past_due, due_date)
+  user_id_array = db.execute("SELECT id FROM users WHERE username = '#{input}'")
+  user_id = user_id_array[0][0]
+  db.execute("INSERT INTO tasks (task, location, past_due, due_date, user_id) VALUES (?, ?, ?, ?, ?)", [task, location, past_due, due_date, 1])
+end
 
  def print_tasks(db, input)
       # update past_due column if task is now past due
@@ -101,9 +70,9 @@ SQL
       tasks = db.execute("SELECT task, past_due FROM tasks WHERE user_id = #{user_id}")
       tasks.each do |task|
         if task[1] === "false"
-          puts "#{task[0]} is not due yet"
+          puts "#{task[0]}"
         elsif task[1] === "true"
-          puts "#{task[0]} is past due"
+          puts "#{task[0]} (PAST DUE)"
         end
       end
  end
@@ -120,14 +89,37 @@ def run_script(db)
   puts "What is your username? Enter 'none' if you're a new user"
   input = gets.chomp
   if input === 'none'
-    add_user(db)
+    puts "What is your name?"
+    input_name = gets.chomp
+    puts "What would you like your user name to be?"
+    input_username = gets.chomp
+    puts "What is your email?"
+    input_email = gets.chomp
+
+    create_user(db, input_username, input_name, input_email)
   else
     puts "Welcome back #{input}!"
     print_tasks(db,input)
     puts "Would you like to add a task? (y/n)"
-    response = gets.chomp
+    response = gets.chomp.downcase
     if response === 'y'
-      add_task(db, input)
+      puts "What is your task?"
+      task = gets.chomp
+      puts "What is the location of the task?"
+      location = gets.chomp
+      # grab due date INT from weekdays hash
+      puts "What week day is the task due?"
+      due_weekday = gets.chomp.downcase
+      due_date = $weekdays[due_weekday]
+      if $t.wday <= due_date
+        past_due = 'false'
+      elsif $t.wday > due_date
+        past_due = 'true'
+      end
+
+      enter_task(db, input, task, location, past_due, due_date)
+    elsif response === 'n'
+      puts "Okay, have a great day!"
     end
   end
 end
