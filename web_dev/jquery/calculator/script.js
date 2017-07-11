@@ -4,6 +4,9 @@ $(document).ready(function() {
   var y = 0;
   var operator = '';
   var flag=false;
+  var operatorConversion = {
+    "+"
+  }
 
   // create calculator div
   $("body").append("<div id='calculator'></div>");
@@ -48,23 +51,28 @@ $(document).ready(function() {
     $(".number").on("click", function(){
       var addToY = this.id;
       y += addToY;
-      console.log("this is" + y);
+      console.log("Y is " + y);
     });
   });
 
-  if(!flag){
+  if(flag===false){
     $(".number").on("click", function(){
        var addToX = this.id;
        x += addToX;
        console.log(flag);
-       console.log(x);
+       console.log("X is " + x);
      });
-  };
+  }
 
   // clear button
   $("#clear").on("click", function(){
     $('#display').val('');
     x = 0;
+    y = 0;
+  });
+
+  $("#equals").on("click", function(){
+    x
   });
 
     // until = is clicked
