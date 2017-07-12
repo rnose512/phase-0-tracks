@@ -1,0 +1,23 @@
+html {
+  background-color: #6096BA;
+}
+
+.buttonWrapper {
+  margin: 1px;
+  display: block;
+  float: center;
+  text-align: center;
+}
+
+.button {
+  padding: 10px 15px;
+  font-size: 15px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#canvas {
+  background-color: #262625;
+  margin: auto;
+  display: block;
+}
+
