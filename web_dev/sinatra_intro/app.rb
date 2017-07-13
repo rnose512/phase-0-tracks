@@ -63,3 +63,8 @@ get '/:number_1/plus/:number_2' do
   output_number = params[:number_1].to_i + params[:number_2].to_i
   "#{params[:number_1]} + #{params[:number_2]} = #{output_number}"
 end
+
+get '/student' do
+  student = db.execute("SELECT name FROM students WHERE name='Dr. Whitney Langosh'")[0]
+  "The student's name is #{student['name']}"
+end
