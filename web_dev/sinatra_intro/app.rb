@@ -49,7 +49,11 @@ get '/contact' do
   "Your address: 123 Front st"
 end
 
-# get '/great_job/:name' do
-#   name = params[:name]
-#   ""
-# end
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good job, #{name}!"
+  else
+    "Good job!"
+  end
+end
