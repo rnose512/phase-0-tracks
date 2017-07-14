@@ -17,6 +17,10 @@ get '/students/new' do
   erb :new_student
 end
 
+get '/campuses/new' do
+  erb :new_campus
+end
+
 # create new students via
 # a form
 post '/students' do
@@ -25,3 +29,12 @@ post '/students' do
 end
 
 # add static resources
+
+# create new campus via
+# a form
+
+post '/campuses' do
+  p params
+  db.execute("INSERT INTO campuses (campus, number) VALUES (?,?)", [params['campus'], params['number'].to_i])
+  redirect '/'
+end
